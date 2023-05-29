@@ -1,4 +1,8 @@
+require 'mysql2'
+
 class WelcomeController < ApplicationController
  
-    def index; end
+    def index; 
+        @event_lists = EventList.all
+    end
    end
