@@ -15,6 +15,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+    !current_user.nil?
+  end
+
   def destroy
     reset_session
     redirect_to root_path, notice: 'ログアウトしました。'
