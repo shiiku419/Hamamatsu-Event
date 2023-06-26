@@ -3,5 +3,11 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# db/seeds.rb
+
+# 例: テストユーザーを作成
+User.create!(
+    name: 'test',
+    email: 'test@example.com',
+    password_digest: 'test0'
+  )
