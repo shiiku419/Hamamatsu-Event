@@ -121,15 +121,23 @@
 								</ul>
 							</li>
 						</ul>
-						<ul class="navbar-nav ml-auto mt-10">
-							<li class="nav-item">
-								<a class="nav-link login-button" href="/login">Login</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
-							</li>
-						</ul>
-					</div>
+              <ul class="navbar-nav ml-auto mt-10">
+                <% if logged_in? %>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= current_user.name %> <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <%= link_to 'Profile', profile_path, class: 'dropdown-item' %> 
+                      <%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
+                    </div>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to 'Login', login_path, class: 'nav-link login-button' %>
+                  </li>
+                <% end %>
+              </ul>
 				</nav>
 			</div>
 		</div>
@@ -229,17 +237,17 @@
                 <div class="card">
                   <div class="thumb-content">
                     <a href="single.html">
-                      <img class="card-img-top img-fluid" src="<%= event_list.URL %>" alt="Card image cap">
+                      <img class="card-img-top img-fluid" src="<%= event_list.url %>" alt="Card image cap">
                     </a>
                   </div>
                   <div class="card-body">
-                    <h4 class="card-title"><a href="single.html"><%= event_list.EventName %></a></h4>
+                    <h4 class="card-title"><a href="single.html"><%= event_list.event_name %></a></h4>
                     <ul class="list-inline product-meta">
                       <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i><%= event_list.Category %></a>
+                        <a href="single.html"><i class="fa fa-folder-open-o"></i><%= event_list.category %></a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="category.html"><i class="fa fa-calendar"></i><%= event_list.StartDate %></a>
+                        <a href="category.html"><i class="fa fa-calendar"></i><%= event_list.start_date %></a>
                       </li>
                     </ul>
                   </div>

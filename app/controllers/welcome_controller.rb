@@ -3,7 +3,7 @@ require 'mysql2'
 class WelcomeController < ApplicationController
  
     def index; 
-        @event_lists = EventList.all
-        @categories = EventList.group(:Category).count
+        @event_lists = Post.all
+        @categories = Post.group(:category).count
     end
    end

@@ -1,0 +1,69 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  municipality_name: MyString
+  event_name: MyString
+  event_name_kana: MyString
+  event_name_english: MyString
+  start_date: 2023-06-19
+  end_date: 2023-06-19
+  start_time: 2023-06-19 15:36:48
+  end_time: 2023-06-19 15:36:48
+  remarks: MyText
+  event_details: MyText
+  basic_fee: MyString
+  detailed_fee: MyString
+  contact_name: MyString
+  contact_phone_number: MyString
+  contact_extension_number: MyString
+  organizer: MyString
+  venue_name: MyString
+  address: MyString
+  directions: MyText
+  latitude: 9.99
+  longitude: 9.99
+  access_method: MyText
+  parking_info: MyText
+  capacity: 1
+  application_end_date: 2023-06-19
+  application_end_time: 2023-06-19 15:36:48
+  application_method: MyText
+  url: MyString
+  category: MyString
+  district: MyString
+  publication_date: 2023-06-19
+  update_date: 2023-06-19
+
+two:
+  municipality_name: MyString
+  event_name: MyString
+  event_name_kana: MyString
+  event_name_english: MyString
+  start_date: 2023-06-19
+  end_date: 2023-06-19
+  start_time: 2023-06-19 15:36:48
+  end_time: 2023-06-19 15:36:48
+  remarks: MyText
+  event_details: MyText
+  basic_fee: MyString
+  detailed_fee: MyString
+  contact_name: MyString
+  contact_phone_number: MyString
+  contact_extension_number: MyString
+  organizer: MyString
+  venue_name: MyString
+  address: MyString
+  directions: MyText
+  latitude: 9.99
+  longitude: 9.99
+  access_method: MyText
+  parking_info: MyText
+  capacity: 1
+  application_end_date: 2023-06-19
+  application_end_time: 2023-06-19 15:36:48
+  application_method: MyText
+  url: MyString
+  category: MyString
+  district: MyString
+  publication_date: 2023-06-19
+  update_date: 2023-06-19
