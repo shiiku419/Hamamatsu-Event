@@ -5,13 +5,14 @@ require 'csv'
 # Examples:
 #
 # db/seeds.rb
+User.delete_all
 
-# 例: テストユーザーを作成
 User.create!(
-    name: 'test',
-    email: 'test@example.com',
-    password_digest: 'test0'
-  )
+  name: 'test',
+  email: 'test@example.com',
+  password: 'test0',
+  password_confirmation: 'test0'
+)
 
 csv_file_path = 'db/hamamatsu_event.csv'
 CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
