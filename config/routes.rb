@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '/posts', to: 'posts#index'
 
+  post '/search', to: 'welcome#search'
+
   resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
     resource :favorites, only: [:create, :destroy]
   end
