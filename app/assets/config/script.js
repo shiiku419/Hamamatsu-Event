@@ -9,12 +9,12 @@
   'use strict';
 
   // navbarDropdown
-	if ($(window).width() < 992) {
-		$('.navigation .dropdown-toggle').on('click', function () {
-			$(this).siblings('.dropdown-menu').animate({
-				height: 'toggle'
-			}, 300);
-		});
+  if ($(window).width() < 992) {
+    $('.navigation .dropdown-toggle').on('click', function () {
+      $(this).siblings('.dropdown-menu').animate({
+        height: 'toggle'
+      }, 300);
+    });
   }
 
   //  Count Up
@@ -46,7 +46,7 @@
   }
   $(window).on('scroll', function () {
     counter();
-		//.Scroll to top show/hide
+    //.Scroll to top show/hide
     var scrollToTop = $('.scroll-top-to'),
       scroll = $(window).scrollTop();
     if (scroll >= 200) {
@@ -55,14 +55,14 @@
       scrollToTop.fadeOut(100);
     }
   });
-	// scroll-to-top
+  // scroll-to-top
   $('.scroll-top-to').on('click', function () {
     $('body,html').animate({
       scrollTop: 0
     }, 500);
     return false;
   });
-    
+
   // -----------------------------
   //  Video Replace
   // -----------------------------
@@ -96,32 +96,32 @@
     nextArrow: '<i class="fa fa-chevron-right arrow-right"></i>',
     prevArrow: '<i class="fa fa-chevron-left arrow-left"></i>',
     responsive: [{
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: false
+        }
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: false
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
     ]
   });
 
@@ -135,31 +135,31 @@
     autoplay: true,
     autoplaySpeed: 800,
     responsive: [{
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
     ]
   });
 
@@ -195,3 +195,37 @@
 
 
 })(jQuery);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+
+  function successCallback(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var center = [latitude, longitude];
+    var map = L.map("map").setView(center, 14);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "Map data © OpenStreetMap contributors"
+    }).addTo(map);
+
+    L.marker(center).addTo(map).bindPopup("現在地");
+  }
+
+  function errorCallback(error) {
+    console.error("Error retrieving current position:", error);
+    var center = [34.7034, 137.7348]; // デフォルトの位置（東京駅）を設定
+    var map = L.map("map").setView(center, 12);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "Map data © OpenStreetMap contributors"
+    }).addTo(map);
+
+    L.marker(center).addTo(map).bindPopup("浜松駅");
+  }
+});
