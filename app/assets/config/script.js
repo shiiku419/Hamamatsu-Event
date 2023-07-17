@@ -196,7 +196,6 @@
 
 })(jQuery);
 
-
 document.addEventListener("DOMContentLoaded", function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
