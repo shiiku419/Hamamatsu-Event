@@ -9,4 +9,14 @@ Rails.application.routes.draw do
   get '/logout',  to: 'sessions#destroy'
   
   get '/profile', to: 'profile#index'
+
+  get '/dashboard', to: 'favorite#_btn'
+
+  get '/posts', to: 'posts#index'
+
+  resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  
+  resources :users, only: [:index, :show, :edit, :update]
 end
