@@ -61,7 +61,7 @@
                 <a class="nav-link" href="/welcome">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./dashboard.html">Post
+                <a class="nav-link" href="/newpost">Post
                 </a>
               </li>
               <li class="nav-item">
@@ -172,8 +172,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="section-title">
-          <h2>Trending Adds</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+          <h2>おすすめのイベント</h2>
         </div>
       </div>
     </div>
@@ -232,12 +231,12 @@
             <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
               <div class="category-block">
                 <div class="header">
-                  <!-- Assuming you have an appropriate icon for each category -->
-                  <i class="fa fa-laptop icon-bg-1"></i>
                   <h4><%= category %></h4>
                 </div>
                 <ul class="category-list">
-                  <li><a href="category.html"><%= category %> <span><%= count %></span></a></li>
+                  <li>
+                  <a href="<%= posts_path(category: category) %>"><i class="fa fa-angle-right"></i> <%= category %> (<%= count %>)</a>
+                  </li>
                 </ul>
               </div>
             </div> <!-- /Category List -->

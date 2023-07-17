@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_010054) do
     t.string "url"
     t.string "category"
     t.string "district"
+    t.string "postal_code"
     t.date "publication_date"
     t.date "update_date"
     t.datetime "created_at", null: false

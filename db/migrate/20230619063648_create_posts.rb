@@ -31,6 +31,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :url
       t.string :category
       t.string :district
+      t.string :postal_code
       t.date :publication_date
       t.date :update_date
 

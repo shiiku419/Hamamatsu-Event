@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   get '/profile', to: 'profile#index'
 
+  get '/newpost', to: 'dashboards#index'
+
   get '/dashboard', to: 'favorite#_btn'
 
   get '/posts', to: 'posts#index'
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:index, :show, :edit, :update]
+  resources :dashboards, only: [:create, :new]
 end
