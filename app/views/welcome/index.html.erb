@@ -164,15 +164,12 @@
               <div class="product-item bg-light">
                 <div class="card">
                   <div class="thumb-content">
-                    <a href="single.html">
-                      <img class="card-img-top img-fluid" src="<%= event_list.url %>" alt="Card image cap">
-                    </a>
                   </div>
                   <div class="card-body">
-                    <h4 class="card-title"><a href="single.html"><%= event_list.event_name %></a></h4>
+                    <h4 class="card-title"><%= link_to event_list.event_name, single_show_path(event_list.id) %></a></h4>
                     <ul class="list-inline product-meta">
                       <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i><%= event_list.category %></a>
+                        <a href="/single"><i class="fa fa-folder-open-o"></i><%= event_list.category %></a>
                       </li>
                       <li class="list-inline-item">
                         <a href="category.html"><i class="fa fa-calendar"></i><%= event_list.start_date %></a>

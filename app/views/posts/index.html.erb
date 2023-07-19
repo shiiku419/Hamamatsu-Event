@@ -173,9 +173,8 @@
               <% @event_lists.each do |post| %>
               <tr>
                 <td class="product-thumb">
-                  <img width="80px" height="auto"  alt="image description"></td>
                 <td class="product-details">
-                  <h3 class="title"><%= post.event_name %></h3>
+                  <h3 class="title"><%= link_to post.event_name , single_show_path(post.id) %></h3>
                   <span class="add-id"><strong>Start Date:</strong> <%= post.start_date %></span>
                   <span><strong>Posted on: </strong><time><%= post.created_at.strftime('%b %d, %Y') %></time> </span>
                   <span class="location"><strong>Location</strong><%= post.district %></span>

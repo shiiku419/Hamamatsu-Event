@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '/posts', to: 'posts#index'
 
+  get 'single/index/:id', to: 'single#show', as: 'single_show'
+
   post '/search', to: 'welcome#search'
 
   resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
