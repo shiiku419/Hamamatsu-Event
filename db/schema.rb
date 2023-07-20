@@ -38,8 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_010054) do
     t.string "venue_name"
     t.string "address"
     t.text "directions"
-    t.decimal "latitude", precision: 10
-    t.decimal "longitude", precision: 10
+    t.decimal "latitude", precision: 9, scale: 7
+    t.decimal "longitude", precision: 10, scale: 7
     t.text "access_method"
     t.text "parking_info"
     t.integer "capacity"

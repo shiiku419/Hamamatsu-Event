@@ -38,6 +38,8 @@
   <link href="/../assets/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   
   <link href="/../assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 </head>
 
@@ -225,11 +227,26 @@
   <!-- Container End -->
 </section>
 
-<div class="widget map">
-  <div class="map">
-    <div id="map" data-latitude="34.7034" data-longitude="137.7348"></div>
-  </div>
-</div>
+<div id="mapid" style="height: 400px;"></div>
+
+<script>
+  var map = L.map('mapid').setView([34.7034, 137.7348], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+  }).addTo(map);
+
+  <% @maps.each do |event| %>
+    <% if event.latitude.present? && event.longitude.present? %>
+      var marker = L.marker([<%= event.latitude %>, <%= event.longitude %>]).addTo(map);
+      var popup = L.popup()
+                   .setContent('<a href="/single/index/<%= event.id %>"><%= event.event_name.gsub("\n", "<br>") %></a>');
+      marker.bindPopup(popup);
+    <% end %>
+  <% end %>
+</script>
+
+
 
 <!-- 
 Essential Scripts
@@ -242,9 +259,6 @@ Essential Scripts
 <script src="/../assets/raty/jquery.raty-fa.js"></script>
 <script src="/../assets/slick/slick.min.js"></script>
 <script src="/../assets/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-<script src="/../assets/google-map/map.js" defer></script>
 
 <script src="/../assets/script.js"></script>
 

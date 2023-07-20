@@ -20,8 +20,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :venue_name
       t.string :address
       t.text :directions
-      t.decimal :latitude
-      t.decimal :longitude
+      t.decimal :latitude, precision: 9, scale: 7
+      t.decimal :longitude, precision: 10, scale: 7
       t.text :access_method
       t.text :parking_info
       t.integer :capacity

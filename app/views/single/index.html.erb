@@ -38,8 +38,10 @@
   <link href="/../assets/slick/slick-theme.css" rel="stylesheet">
   <link href="/../assets/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 
-    <link href="/../assets/css/style.css" rel="stylesheet">
+  <link href="/../assets/css/style.css" rel="stylesheet">
   <link href="/../assets/single.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 </head>
 
@@ -133,14 +135,34 @@
               </ul>
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                  <h3 class="tab-title">日時：<%= @post.start_date.strftime("%Y-%m-%d") %> <%= @post.start_time.strftime("%H:%M") %>~<%= @post.end_time.strftime("%H:%M") %></h3>
+                <% if @post.start_date.present? %>
+                  <h3 class="tab-title">日時：<%= @post.start_date.strftime("%Y-%m-%d") %>
+                    <% if @post.start_time.present? && @post.end_time.present? %>
+                      <%= @post.start_time.strftime("%H:%M") %>~<%= @post.end_time.strftime("%H:%M") %>
+                    <% end %>
+                  </h3>
+                <% end %>
+                <% if @post.url.present? %>
                   <h3 class="tab-title">URL：<a href="<%= @post.url %>"><%= @post.url %></a></h3>
+                <%end%>
+                <% if @post.basic_fee.present? %>
                   <h3 class="tab-title">料金：<%= @post.basic_fee %></h3>
+                <%end%>
+                <% if @post.event_details.present? %>
                   <h3 class="tab-title">詳細：<%= @post.event_details %></h3>
+                <%end%>
+                <% if @post.address.present? %>
                   <h3 class="tab-title">住所：<%= @post.address %></h3>
+                <%end%>
+                <% if @post.contact_name.present? %>
                   <h3 class="tab-title">連絡先：<%= @post.contact_name %></h3>
+                <%end%>
+                <% if @post.contact_phone_number.present? %>
                   <h3 class="tab-title">電話番号：<%= @post.contact_phone_number %></h3>
+                <%end%>
+                <% if @post.publication_date.present? %>
                   更新：<%= @post.publication_date %>
+                <%end%>
                 </div>
 
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -166,9 +188,7 @@
             </div>
             <!-- Map Widget -->
             <div class="widget map">
-              <div class="map">
-                <div id="map" data-latitude="34.7034" data-longitude="137.7348", data-no-turbolink: true do ></div>
-              </div>
+              <div id="mapid" style="height: 400px;"></div>
             </div>
           </div>
         </div>
@@ -178,11 +198,20 @@
     <!-- Container End -->
   </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-<script src="/../assets/google-map/map.js" defer></script>
 
+<script>
+  var map = L.map('mapid').setView([<%= @post.latitude %>, <%= @post.longitude %>], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+  }).addTo(map);
+
+  <% if @post.latitude.present? && @post.longitude.present? %>
+    L.marker([<%= @post.latitude %>, <%= @post.longitude %>]).addTo(map);
+  <% end %>
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/../assets/script.js"></script>
 
 <style>
