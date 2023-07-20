@@ -16,10 +16,20 @@ class ProfileController < ApplicationController
       end
     end
   
+    def update
+      if current_user.update(user_params)
+        redirect_to profile_path, notice: 'Your profile was successfully updated.'
+        p 'test'
+      else
+        p 'test2'
+        render :index
+      end
+    end    
+    
     private
   
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
   end
   

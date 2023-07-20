@@ -122,37 +122,27 @@
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header border-bottom-0">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <%= form_with(model: current_user, url: profile_path, method: :patch, local: true) do |form| %>
+        <div class="update-form">
+          <div class="form-name">名前</div>
+          <%= form.text_field :name, class: 'form-control', placeholder: 'イベント 太郎' %>
         </div>
-        <h6 class="py-2">プロフィール更新</h6>
-        <div class="modal-body text-center input-form">
-          <div class="update-form">
-            <div class="form-name">名前</div>
-            <input class="form-control" name="message" id="" cols="40" rows="4" class="w-100 rounded"
-              placeholder="イベント 太郎">
-          </div>
-          <div class="update-form">
-            <div class="form-name">メールアドレス</div>
-            <input class="form-control" name="message" id="" cols="40" rows="4" class="w-100 rounded"
-              placeholder="tarou@event.mail">
-          </div>
-          <div class="update-form">
-            <div class="form-name">パスワード</div>
-            <input type="password" class="form-control" name="message" id="" cols="40" rows="4"
-              class="w-100 rounded" placeholder="半角英数で入力">
-          </div>
-          <div class="update-form">
-            <div class="form-name">パスワード(確認)</div>
-            <input type="password" class="form-control" name="message" id="" cols="40" rows="4"
-              class="w-100 rounded" placeholder="再入力してください">
-          </div>
+        <div class="update-form">
+          <div class="form-name">メールアドレス</div>
+          <%= form.email_field :email, class: 'form-control', placeholder: 'tarou@event.mail' %>
+        </div>
+        <div class="update-form">
+          <div class="form-name">パスワード</div>
+          <%= form.password_field :password, class: 'form-control', placeholder: '半角英数で入力' %>
+        </div>
+        <div class="update-form">
+          <div class="form-name">パスワード(確認)</div>
+          <%= form.password_field :password_confirmation, class: 'form-control', placeholder: '再入力してください' %>
         </div>
         <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-center">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+          <%= form.submit '更新', class: 'btn btn-primary' %>
         </div>
+      <% end %>
       </div>
     </div>
   </div>

@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :edit, :update]
   resources :dashboards, only: [:create, :new]
+
+  resources :profile, only: [:index, :new, :create, :update]
 end
