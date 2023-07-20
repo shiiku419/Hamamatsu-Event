@@ -25,7 +25,7 @@ class ProfileController < ApplicationController
         render :index
       end
     end    
-    
+
     private
   
     def user_params

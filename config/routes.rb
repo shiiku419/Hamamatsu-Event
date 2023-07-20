@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/posts', to: 'posts#index'
 
+  patch '/profile', to: 'profile#update'
+
   get 'single/index/:id', to: 'single#show', as: 'single_show'
 
   post '/search', to: 'welcome#search'
