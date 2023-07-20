@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   
   get '/profile', to: 'profile#index'
 
+  get '/register', to: 'profile#new'
+
+  post '/register', to: 'profile#create'
+
   get '/newpost', to: 'dashboards#index'
 
   get '/dashboard', to: 'favorite#_btn'
