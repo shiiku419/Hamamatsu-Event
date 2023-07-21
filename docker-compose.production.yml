@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db:
+    image: mariadb:10.6.7
+    volumes:
+      - dbvolume:/var/lib/mysql/data
+    platform: linux/x86_64
+    env_file: production.env
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/admin_template
+      - gem_data:/usr/local/bundle
+    ports:
+      - "80:3000" # Change port to 80 for HTTP in production
+    depends_on:
+      - db
+    env_file: production.env
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_ENV: production
+volumes:
+  dbvolume:
+  gem_data:

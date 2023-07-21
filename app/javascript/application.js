@@ -1,5 +1,5 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
+// import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 import $ from "jquery"
@@ -16,3 +16,7 @@ import "./jquery.zip2addr"
 import "fetch-jsonp"
 import "./script"
 import "./post"
+
+$(function () {
+    $('#header').fadeIn(0);
+});
