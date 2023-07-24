@@ -4,9 +4,5 @@ class WelcomeController < ApplicationController
       @maps = Post.order(:id)
       @categories = Post.group(:category).count
     end
-  
-    def search
-      @results = Post.where("title LIKE ? AND category = ? AND location LIKE ?", "%#{params[:query]}%", params[:category], "%#{params[:location]}%")
-    end
   end
   

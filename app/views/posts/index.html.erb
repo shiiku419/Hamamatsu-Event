@@ -171,6 +171,23 @@
               </tr>
             </thead>
             <tbody>
+            <% if @results && !@results.empty? %>
+              <% @results.each do |post| %>
+              <tr>
+                <td class="product-thumb">
+                <td class="product-details">
+                  <h3 class="title"><%= link_to post.event_name , single_show_path(post.id) %></h3>
+                  <span class="add-id"><strong>Start Date:</strong> <%= post.start_date %></span>
+                  <span><strong>Posted on: </strong><time><%= post.created_at.strftime('%b %d, %Y') %></time> </span>
+                  <span class="location"><strong>Location</strong><%= post.district %></span>
+                </td>
+                <td class="product-category"><span class="categories"><%= post.category %></span></td>
+                <td class="action" data-title="Action">
+                  <%= render "favorites/btn", post: post %>
+                </td>
+              </tr>
+              <% end %>
+            <% elsif @event_lists && !@event_lists.empty? %>
               <% @event_lists.each do |post| %>
               <tr>
                 <td class="product-thumb">
@@ -186,13 +203,23 @@
                 </td>
               </tr>
               <% end %>
+            <% else %>
+              <tr>
+                <td colspan="4">ヒット数は0件です</td>
+              </tr>
+            <% end %>
             </tbody>
           </table>
 
         </div>
 
         <!-- pagination -->
-        <%= will_paginate @event_lists, renderer: BootstrapPagination::Rails %>
+        <% if @results && !@results.empty? %>
+          <%= will_paginate @results, renderer: BootstrapPagination::Rails %>
+        <% elsif @event_lists && !@event_lists.empty? %>
+          <%= will_paginate @event_lists, renderer: BootstrapPagination::Rails %>
+        <% else %>
+        <% end %>
         <!-- pagination -->
 
       </div>

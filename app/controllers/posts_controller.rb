@@ -8,4 +8,13 @@ class PostsController < ApplicationController
         @categories = Post.group(:category).count
         @location = Post.group(:district).count
     end
+
+    def search
+        @results = Post.eager_load(:favorites).where("event_name LIKE ? AND category = ?", "%#{params[:query]}%", params[:category])
+        p @results
+        @categories = Post.group(:category).count
+        @location = Post.group(:district).count
+        @results = @results.paginate(page: params[:page], per_page: 10) if @results.any?
+        render 'posts/index'
+    end       
 end
