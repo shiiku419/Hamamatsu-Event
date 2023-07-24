@@ -92,6 +92,11 @@
       </div>
     </div>
   </div>
+<% if flash[:alert] %>
+  <div class="alert alert-danger" role="alert">
+    <p class="notice text-center"><%= flash[:alert] %></p>
+  </div>
+<% end %>
 </header>
 
 <section class="login py-5 border-top-1">
