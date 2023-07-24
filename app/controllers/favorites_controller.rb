@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def create
-    post = Post.find(params[:post_id])
+    post = Post.eager_load(:favorites).find(params[:post_id])
     favorite = current_user.favorites.new(post: post) # post_idを直接指定する代わりに関連オブジェクトを指定します
     favorite.save
     redirect_to request.referer
