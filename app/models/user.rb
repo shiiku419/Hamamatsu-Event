@@ -7,4 +7,8 @@ class User < ApplicationRecord
     def liked_categories
         favorites.joins(:post).pluck('posts.category').uniq
     end
+
+    def favorited_categories
+        self.favorites.joins(:post).pluck('posts.category').uniq
+    end
 end
